@@ -120,9 +120,9 @@ public class ToolStore extends NormalLocation {
             this.getPlayer().setMoney(getPlayer().getMoney()-armors[armorChoice-1].getMoney());
             this.getPlayer().setHealth(this.getPlayer().getHealth() + ınventory.getArmorDefence());
             System.out.println("Remaining money: " + getPlayer().getMoney() + "\n" +
-                    "Your new armor set: " + getPlayer().getInventory().getArmorName());
+                    "Your new armor set: " + ınventory.getArmorName());
 
-            getPlayer().setHealth(getPlayer().getInventory().getArmorDefence());
+
 
         }
 
