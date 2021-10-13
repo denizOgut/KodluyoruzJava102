@@ -10,12 +10,15 @@ KARAKTERLER
 ![](https://i.hizliresim.com/4jjezvb.PNG)
 
 CANAVARLAR
+
 ![](https://i.hizliresim.com/7u79wvy.PNG)
 
 SİLAHLAR
+
 ![](https://i.hizliresim.com/5g1r1im.PNG)
 
 ZIRHLAR
+
 ![](https://i.hizliresim.com/hc96zz5.PNG)
 
 MEKANLAR
