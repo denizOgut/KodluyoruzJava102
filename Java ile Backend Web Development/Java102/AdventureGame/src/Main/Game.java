@@ -1,9 +1,9 @@
 package Main;
 
+import LocationClass.Location;
 import LocationClass.NormalLocation.SafeHouse;
 import LocationClass.NormalLocation.ToolStore;
 
-import javax.xml.stream.Location;
 import java.util.Scanner;
 
 public class Game {

@@ -9,6 +9,6 @@ public class Zombie extends Monster{
         super.setDamage(3);
         super.setHealth(10);
         super.setMoney(4);
-        super.setMonsterCount(new Random().nextInt(3) + 1);
+
     }
 }

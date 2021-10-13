@@ -4,6 +4,9 @@ import CharacterClass.Archer;
 import CharacterClass.Character;
 import CharacterClass.Kngiht;
 import CharacterClass.Samurai;
+import LocationClass.BattleLocation.Cave;
+import LocationClass.BattleLocation.Forest;
+import LocationClass.BattleLocation.River;
 import LocationClass.Location;
 import LocationClass.NormalLocation.SafeHouse;
 import LocationClass.NormalLocation.ToolStore;
@@ -18,7 +21,6 @@ public class Player {
     private Inventory inventory;
 
 
-
     public Player() {
 
         this.selectChar();
@@ -29,47 +31,27 @@ public class Player {
 
     public void selectChar() {
         Scanner sc = new Scanner(System.in);
-        Character[] character = {new Samurai(), new Archer(), new Kngiht()};
+        classList();
         System.out.println("Welcome to the game adventurer. Please enter your name: ");
         this.name = sc.nextLine();
-
-        System.out.println("=======================================================================");
-
-        System.out.println("Character classes stats:" + "\n" +
-                "Samurai id: " + (character[0].getId() + "\t" +
-                "Samurai damage: " + (character[0].getDamage() + "\t" +
-                "Samurai health: " + (character[0].getHealth() + "\t" +
-                "Samurai money: " + (character[0].getMoney() + "\n" +
-                "Archer id: " + character[1].getId() + "\t" +
-                "Archer damage: " + character[1].getDamage() + "\t" +
-                "Archer health: " + character[1].getHealth() + "\t" +
-                "Archer money: " + character[1].getMoney() + "\n" +
-                "Knight id: " + character[2].getId() + "\t" +
-                "Knight damage: " + character[2].getDamage() + "\t" +
-                "Knight health: " + character[2].getHealth() + "\t" +
-                "Knight money: " + character[2].getMoney())))));
-        System.out.println("=======================================================================");
-        System.out.println(" Please choose your character:" + "\n" +
-                "1-Samurai" + "\n" +
-                "2-Archer" + "\n" +
-                "3-Knight");
-        System.out.println("=======================================================================");
+        welcomeScreen();
+        System.out.print("-->");
         int choice = sc.nextInt();
         switch (choice) {
             case 1:
-                this.setDamage(character[0].getDamage());
-                this.setHealth(character[0].getHealth());
-                this.setMoney(character[0].getMoney());
+                this.setDamage(classList()[0].getDamage());
+                this.setHealth(classList()[0].getHealth());
+                this.setMoney(classList()[0].getMoney());
                 break;
             case 2:
-                this.setDamage(character[1].getDamage());
-                this.setHealth(character[1].getHealth());
-                this.setMoney(character[1].getMoney());
+                this.setDamage(classList()[1].getDamage());
+                this.setHealth(classList()[1].getHealth());
+                this.setMoney(classList()[1].getMoney());
                 break;
             case 3:
-                this.setDamage(character[2].getDamage());
-                this.setHealth(character[2].getHealth());
-                this.setMoney(character[2].getMoney());
+                this.setDamage(classList()[2].getDamage());
+                this.setHealth(classList()[2].getHealth());
+                this.setMoney(classList()[2].getMoney());
                 break;
             default:
                 System.out.println("Please enter valid number!");
@@ -80,41 +62,92 @@ public class Player {
     }
 
 
-    public void selectLocation(){
+    public void selectLocation() {
         Scanner sc = new Scanner(System.in);
-         Location location = null;
-        // while (true) {
-             System.out.println("Starting Zones:" + "\n" +
-                     "1-Safe House --> You can rest here" + "\n" +
-                     "2-ToolStore --> You can buy arsenal");
-             System.out.println("=======================================================================");
-             int choice = sc.nextInt();
-             switch (choice) {
-                 case 1:
-                     location = new SafeHouse(this);
-
-                     break;
-                 case 2:
-                     location = new ToolStore(this);
-
-                     break;
-                 default:
-                     System.out.println("Please enter valid number!");
-                     break;
-             }
-
-             if (!location.onLocation()){
-                System.out.println("You are dead");
-                //break;
+        Location location = null;
+        boolean showLocationMenu = true;
+        while (showLocationMenu) {
+            System.out.println("Starting Zones:" + "\n" +
+                    "0-Exit --> You can quit" + "\n" +
+                    "1-Safe House --> You can rest here" + "\n" +
+                    "2-ToolStore --> You can buy arsenal" + "\n" +
+                    "3-Cave --> < Prize:Food >Enter the Cave , beware zombies roaming !" + "\n" +
+                    "4-Forest --> < Prize:Wood > Enter the Forest , beware bears roaming !" + "\n" +
+                    "5-River --> < Prize:Water > Enter the River , beware vampires roaming !");
+            System.out.println("=======================================================================");
+            System.out.print("-->");
+            int choice = sc.nextInt();
+            switch (choice) {
+                case 0:
+                    showLocationMenu = false;
+                    System.out.println("Hope to see you again soon adventurer. ");
+                    location = null;
+                    break;
+                case 1:
+                    location = new SafeHouse(this);
+                    break;
+                case 2:
+                    location = new ToolStore(this);
+                    break;
+                case 3:
+                    location = new Cave(this);
+                    break;
+                case 4:
+                    location = new Forest(this);
+                    break;
+                case 5:
+                    location = new River(this);
+                    break;
+                default:
+                    System.out.println("Please enter valid number!");
+                    break;
             }
-         //}
+
+            if (location != null && !location.onLocation()) {
+                System.out.println("You are dead");
+                break;
+            }
+        }
 
     }
 
-    public void printInfo(){
+    public void printInfo() {
+        Inventory ınventory = new Inventory();
         System.out.println("Player name: " + this.getName() + "\t" + "Player damage: " + this.getDamage() + "\t" +
                 "Player health: " + this.getHealth() + "\t" +
-                "Player money: " + this.getMoney());
+                "Player money: " + this.getMoney() + "\t" +
+                "Player weapon: " + ınventory.getWeaponName() + "\t" +
+                "Player armor: " + ınventory.getArmorName());
+    }
+
+    public Character[] classList() {
+        Character[] character = {new Samurai(), new Archer(), new Kngiht()};
+        return character;
+    }
+
+    public void welcomeScreen() {
+        classList();
+        System.out.println("=======================================================================");
+        System.out.println("Character classes stats:" + "\n" +
+                "Samurai id: " + (classList()[0].getId() + "\t" +
+                "Samurai damage: " + (classList()[0].getDamage() + "\t" +
+                "Samurai health: " + (classList()[0].getHealth() + "\t" +
+                "Samurai money: " + (classList()[0].getMoney() + "\n" +
+                "Archer id: " + classList()[1].getId() + "\t" +
+                "Archer damage: " + classList()[1].getDamage() + "\t" +
+                "Archer health: " + classList()[1].getHealth() + "\t" +
+                "Archer money: " + classList()[1].getMoney() + "\n" +
+                "Knight id: " + classList()[2].getId() + "\t" +
+                "Knight damage: " + classList()[2].getDamage() + "\t" +
+                "Knight health: " + classList()[2].getHealth() + "\t" +
+                "Knight money: " + classList()[2].getMoney())))));
+        System.out.println("=======================================================================");
+        System.out.println(" Please choose your character:" + "\n" +
+                "1-Samurai" + "\n" +
+                "2-Archer" + "\n" +
+                "3-Knight");
+        System.out.println("=======================================================================");
+
     }
 
     public String getName() {

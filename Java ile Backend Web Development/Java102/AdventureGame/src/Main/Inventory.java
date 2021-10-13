@@ -6,8 +6,8 @@ public class Inventory {
    private int weaponDamage , armorDefence;
 
     public Inventory() {
-        this.weaponName = "";
-        this.armorName = "";
+        this.weaponName = "Fist";
+        this.armorName = "Robe";
         this.weaponDamage = 0;
         this.armorDefence = 0;
     }

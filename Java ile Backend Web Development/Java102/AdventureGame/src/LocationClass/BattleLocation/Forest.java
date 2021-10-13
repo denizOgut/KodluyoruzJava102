@@ -2,10 +2,11 @@ package LocationClass.BattleLocation;
 
 import Main.Player;
 import MonsterClass.Monster;
+import MonsterClass.Vampire;
 
 public class Forest extends BattleLocation{
     public Forest(Player player) {
-        super(player, "Forest");
+        super(player, "Forest", new Vampire());
     }
 
     @Override
@@ -13,10 +14,6 @@ public class Forest extends BattleLocation{
 
     }
 
-    @Override
-    public boolean onLocation() {
-        return false;
-    }
 
     @Override
     public String battleLoc(Monster monster) {

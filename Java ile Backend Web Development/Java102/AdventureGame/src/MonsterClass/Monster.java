@@ -1,7 +1,7 @@
 package MonsterClass;
 
 public abstract class Monster {
-    private int ıd, damage, health, money,monsterCount;
+    private int ıd, damage, health, money;
 
     public int getId() {
         return ıd;
@@ -31,13 +31,7 @@ public abstract class Monster {
         return money;
     }
 
-    public int getMonsterCount() {
-        return monsterCount;
-    }
 
-    public void setMonsterCount(int monsterCount) {
-        this.monsterCount = monsterCount;
-    }
 
     public void setMoney(int money) {
         this.money = money;

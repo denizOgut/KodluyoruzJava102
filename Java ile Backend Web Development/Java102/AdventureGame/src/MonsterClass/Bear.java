@@ -8,7 +8,7 @@ public class Bear extends Monster{
         super.setDamage(7);
         super.setHealth(20);
         super.setMoney(12);
-        super.setMonsterCount(new Random().nextInt(3) + 1);
+
 
     }
 }
