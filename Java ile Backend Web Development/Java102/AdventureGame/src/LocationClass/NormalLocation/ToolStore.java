@@ -45,6 +45,7 @@ public class ToolStore extends NormalLocation {
                     showMenu = false;
                     break;
             }
+
         }
         return true;
     }
@@ -98,18 +99,18 @@ public class ToolStore extends NormalLocation {
     }
 
     public void buyWeapons(Weapon[] weapons, int weaponChoice) {
-        Inventory ınventory = new Inventory();
+
         if (weapons[weaponChoice - 1].getMoney() > getPlayer().getMoney()) {
             System.out.println("You don't have enough money");
         } else {
-            ınventory.setWeaponDamage(weapons[weaponChoice - 1].getDamage());
-            ınventory.setWeaponName(weapons[weaponChoice - 1].getClass().getSimpleName());
-            this.getPlayer().setMoney(getPlayer().getMoney() - weapons[weaponChoice - 1].getMoney());
-            this.getPlayer().setDamage(this.getPlayer().getDamage() + ınventory.getWeaponDamage());
+            getPlayer().getInventory().setWeaponDamage(weapons[weaponChoice - 1].getDamage());
+           getPlayer().getInventory().setWeaponName(weapons[weaponChoice - 1].getClass().getSimpleName());
+            getPlayer().setMoney(getPlayer().getMoney() - weapons[weaponChoice - 1].getMoney());
+            getPlayer().setDamage(this.getPlayer().getDamage() +  this.getPlayer().getInventory().getWeaponDamage());
             System.out.println("Remaining money: " + getPlayer().getMoney() + "\n" +
-                    "Your new weapon set: " + ınventory.getWeaponName());
+                    "Your new weapon set: " + this.getPlayer().getInventory().getWeaponName());
 
-            this.getPlayer().printInfo();
+
 
 
         }
@@ -117,18 +118,17 @@ public class ToolStore extends NormalLocation {
     }
 
     public void buyArmors(Armor[] armors, int armorChoice) {
-        Inventory ınventory = new Inventory();
+
         if (armors[armorChoice - 1].getMoney() > getPlayer().getMoney()) {
             System.out.println("You don't have enough money");
         } else {
-            ınventory.setArmorDefence(armors[armorChoice - 1].getBlock());
-            ınventory.setArmorName(armors[armorChoice - 1].getClass().getSimpleName());
-            this.getPlayer().setMoney(getPlayer().getMoney() - armors[armorChoice - 1].getMoney());
-            this.getPlayer().setHealth(this.getPlayer().getHealth() + ınventory.getArmorDefence());
-            System.out.println("Remaining money: " + getPlayer().getMoney() + "\n" +
-                    "Your new armor set: " + ınventory.getArmorName());
+            this.getPlayer().getInventory().setArmorDefence(armors[armorChoice - 1].getBlock());
+            this.getPlayer().getInventory().setArmorName(armors[armorChoice - 1].getClass().getSimpleName());
+            this.getPlayer().setMoney(this.getPlayer().getMoney() - armors[armorChoice - 1].getMoney());
+            System.out.println("Remaining money: " + this.getPlayer().getMoney() + "\n" +
+                    "Your new armor set: " +  this.getPlayer().getInventory().getArmorName() + "\n" +
+            "Your new armor defence: " + this.getPlayer().getInventory().getArmorDefence());
 
-            this.getPlayer().printInfo();
 
 
         }

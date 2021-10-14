@@ -9,12 +9,5 @@ public class River extends BattleLocation{
         super(player, "River", new Bear());
     }
 
-    @Override
-    public void combat() {
-    }
 
-    @Override
-    public String battleLoc(Monster monster) {
-        return null;
-    }
 }

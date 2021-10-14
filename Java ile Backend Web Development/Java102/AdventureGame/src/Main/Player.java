@@ -12,6 +12,7 @@ import LocationClass.NormalLocation.SafeHouse;
 import LocationClass.NormalLocation.ToolStore;
 
 
+
 import java.util.Scanner;
 
 public class Player {
@@ -21,15 +22,16 @@ public class Player {
     private Inventory inventory;
 
 
+
     public Player() {
 
         this.selectChar();
         this.selectLocation();
-        this.inventory = new Inventory();
 
     }
 
     public void selectChar() {
+        this.inventory = new Inventory();
         Scanner sc = new Scanner(System.in);
         classList();
         System.out.println("Welcome to the game adventurer. Please enter your name: ");
@@ -77,6 +79,10 @@ public class Player {
             System.out.println("=======================================================================");
             System.out.print("-->");
             int choice = sc.nextInt();
+            while (choice < 0 || choice > 5) {
+                System.out.print("Please enter valid number! ");
+                choice = sc.nextInt();
+            }
             switch (choice) {
                 case 0:
                     showLocationMenu = false;
@@ -98,26 +104,29 @@ public class Player {
                 case 5:
                     location = new River(this);
                     break;
-                default:
-                    System.out.println("Please enter valid number!");
-                    break;
+
             }
 
-            if (location != null && !location.onLocation()) {
+
+            assert location != null;
+            if (!location.onLocation()) {
                 System.out.println("You are dead");
                 break;
             }
+
         }
+
+        System.out.println("Location: " + location);
 
     }
 
     public void printInfo() {
-        Inventory ınventory = new Inventory();
+
         System.out.println("Player name: " + this.getName() + "\t" + "Player damage: " + this.getDamage() + "\t" +
                 "Player health: " + this.getHealth() + "\t" +
                 "Player money: " + this.getMoney() + "\t" +
-                "Player weapon: " + ınventory.getWeaponName() + "\t" +
-                "Player armor: " + ınventory.getArmorName());
+                "Player armor set: " + this.getInventory().getArmorName() + "\t" +
+                "Player weapon set: " + this.getInventory().getWeaponName());
     }
 
     public Character[] classList() {
@@ -182,6 +191,7 @@ public class Player {
         this.money = money;
     }
 
+
     public Inventory getInventory() {
         return inventory;
     }
@@ -189,4 +199,5 @@ public class Player {
     public void setInventory(Inventory inventory) {
         this.inventory = inventory;
     }
+
 }

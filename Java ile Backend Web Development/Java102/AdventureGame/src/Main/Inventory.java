@@ -2,14 +2,42 @@ package Main;
 
 
 public class Inventory {
-   private String weaponName , armorName;
-   private int weaponDamage , armorDefence;
+    private boolean water,food,firewood;
+    private String weaponName, armorName;
+    private int weaponDamage, armorDefence;
 
-    public Inventory() {
-        this.weaponName = "Fist";
-        this.armorName = "Robe";
+    Inventory(){
+        this.water = false;
+        this.food = false;
+        this.firewood = false;
         this.weaponDamage = 0;
         this.armorDefence = 0;
+        this.weaponName = "Fist";
+        this.armorName = "Robe";
+    }
+
+    public boolean isWater() {
+        return water;
+    }
+
+    public void setWater(boolean water) {
+        this.water = water;
+    }
+
+    public boolean isFood() {
+        return food;
+    }
+
+    public void setFood(boolean food) {
+        this.food = food;
+    }
+
+    public boolean isFirewood() {
+        return firewood;
+    }
+
+    public void setFirewood(boolean firewood) {
+        this.firewood = firewood;
     }
 
     public String getWeaponName() {
@@ -43,5 +71,6 @@ public class Inventory {
     public void setArmorDefence(int armorDefence) {
         this.armorDefence = armorDefence;
     }
-}
 
+
+}

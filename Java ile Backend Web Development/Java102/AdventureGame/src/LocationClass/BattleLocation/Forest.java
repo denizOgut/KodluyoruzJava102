@@ -9,14 +9,5 @@ public class Forest extends BattleLocation{
         super(player, "Forest", new Vampire());
     }
 
-    @Override
-    public void combat() {
 
-    }
-
-
-    @Override
-    public String battleLoc(Monster monster) {
-        return null;
-    }
 }
