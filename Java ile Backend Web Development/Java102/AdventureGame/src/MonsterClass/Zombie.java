@@ -5,10 +5,8 @@ import java.util.Random;
 public class Zombie extends Monster{
 
     public Zombie() {
-        super.setId(1);
-        super.setDamage(3);
-        super.setHealth(10);
-        super.setMoney(4);
+        super(1,3,10,4);
+
 
     }
 }

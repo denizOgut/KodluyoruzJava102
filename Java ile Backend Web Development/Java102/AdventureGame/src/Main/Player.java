@@ -12,15 +12,14 @@ import LocationClass.NormalLocation.SafeHouse;
 import LocationClass.NormalLocation.ToolStore;
 
 
-
+import java.util.Objects;
 import java.util.Scanner;
 
 public class Player {
 
     private String name;
-    private int damage, health, money;
+    private int damage, health, money, defaultHealth;
     private Inventory inventory;
-
 
 
     public Player() {
@@ -44,16 +43,19 @@ public class Player {
                 this.setDamage(classList()[0].getDamage());
                 this.setHealth(classList()[0].getHealth());
                 this.setMoney(classList()[0].getMoney());
+                this.setDefaultHealth(classList()[0].getHealth());
                 break;
             case 2:
                 this.setDamage(classList()[1].getDamage());
                 this.setHealth(classList()[1].getHealth());
                 this.setMoney(classList()[1].getMoney());
+                this.setDefaultHealth(classList()[1].getHealth());
                 break;
             case 3:
                 this.setDamage(classList()[2].getDamage());
                 this.setHealth(classList()[2].getHealth());
                 this.setMoney(classList()[2].getMoney());
+                this.setDefaultHealth(classList()[2].getHealth());
                 break;
             default:
                 System.out.println("Please enter valid number!");
@@ -85,9 +87,9 @@ public class Player {
             }
             switch (choice) {
                 case 0:
-                    showLocationMenu = false;
                     System.out.println("Hope to see you again soon adventurer. ");
                     location = null;
+                    showLocationMenu = false;
                     break;
                 case 1:
                     location = new SafeHouse(this);
@@ -108,15 +110,18 @@ public class Player {
             }
 
 
-            assert location != null;
-            if (!location.onLocation()) {
-                System.out.println("You are dead");
+            if (location != null && !location.onLocation()) {
+                System.out.println("Game Over !");
                 break;
             }
 
-        }
+            if (location.getClass().getName().equals("SafeHouse") && isPrize()) {
+                System.out.println("You have fulfilled all the conditions and won the game!");
+                break;
+            }
 
-        System.out.println("Location: " + location);
+
+        }
 
     }
 
@@ -159,6 +164,10 @@ public class Player {
 
     }
 
+    public boolean isPrize() {
+        return this.getInventory().isWater() == true && this.getInventory().isFirewood() == true && this.getInventory().isFood() == true;
+    }
+
     public String getName() {
         return name;
     }
@@ -189,6 +198,14 @@ public class Player {
 
     public void setMoney(int money) {
         this.money = money;
+    }
+
+    public int getDefaultHealth() {
+        return defaultHealth;
+    }
+
+    public void setDefaultHealth(int defaultHealth) {
+        this.defaultHealth = defaultHealth;
     }
 
 
