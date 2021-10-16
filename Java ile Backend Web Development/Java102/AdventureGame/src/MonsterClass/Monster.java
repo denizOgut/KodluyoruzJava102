@@ -2,6 +2,7 @@ package MonsterClass;
 
 public abstract class Monster {
     private int ıd, damage, health, money,defaultHealth;
+    private String prize;
 
     public Monster(int ıd, int damage, int health, int money) {
         this.ıd = ıd;
@@ -9,6 +10,7 @@ public abstract class Monster {
         this.health = health;
         this.money = money;
         this.defaultHealth = health;
+        this.prize = "";
     }
 
     public int getDefaultHealth() {
@@ -39,11 +41,20 @@ public abstract class Monster {
         return health;
     }
 
+    public String getPrize() {
+        return prize;
+    }
+
+    public void setPrize(String prize) {
+        this.prize = prize;
+    }
+
     public void setHealth(int health) {
-        if (this.health < 0){
-            health = 0;
-        }
         this.health = health;
+        if (this.health < 0){
+            this.health = 0;
+        }
+
     }
 
     public int getMoney() {

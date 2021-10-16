@@ -6,6 +6,7 @@ import CharacterClass.Kngiht;
 import CharacterClass.Samurai;
 import LocationClass.BattleLocation.Cave;
 import LocationClass.BattleLocation.Forest;
+import LocationClass.BattleLocation.Mine;
 import LocationClass.BattleLocation.River;
 import LocationClass.Location;
 import LocationClass.NormalLocation.SafeHouse;
@@ -20,6 +21,7 @@ public class Player {
     private String name;
     private int damage, health, money, defaultHealth;
     private Inventory inventory;
+
 
 
     public Player() {
@@ -38,6 +40,10 @@ public class Player {
         welcomeScreen();
         System.out.print("-->");
         int choice = sc.nextInt();
+        while (choice < 0 || choice > 3) {
+            System.out.print("Please enter valid number! ");
+            choice = sc.nextInt();
+        }
         switch (choice) {
             case 1:
                 this.setDamage(classList()[0].getDamage());
@@ -77,19 +83,20 @@ public class Player {
                     "2-ToolStore --> You can buy arsenal" + "\n" +
                     "3-Cave --> < Prize:Food >Enter the Cave , beware zombies roaming !" + "\n" +
                     "4-Forest --> < Prize:Wood > Enter the Forest , beware bears roaming !" + "\n" +
-                    "5-River --> < Prize:Water > Enter the River , beware vampires roaming !");
+                    "5-River --> < Prize:Water > Enter the River , beware vampires roaming !" + "\n" +
+                    "6-Mine --> < Prize:Item,Gold > Enter the Cave , beware snakes roaming !");
             System.out.println("=======================================================================");
             System.out.print("-->");
             int choice = sc.nextInt();
-            while (choice < 0 || choice > 5) {
+            while (choice < 0 || choice > 6) {
                 System.out.print("Please enter valid number! ");
                 choice = sc.nextInt();
             }
             switch (choice) {
                 case 0:
                     System.out.println("Hope to see you again soon adventurer. ");
-                    location = null;
                     showLocationMenu = false;
+                    location = null;
                     break;
                 case 1:
                     location = new SafeHouse(this);
@@ -106,16 +113,20 @@ public class Player {
                 case 5:
                     location = new River(this);
                     break;
+                case 6:
+                    location = new Mine(this);
+                    break;
 
             }
 
 
-            if (location != null && !location.onLocation()) {
+            if (!showLocationMenu) {
                 System.out.println("Game Over !");
                 break;
             }
 
-            if (location.getClass().getName().equals("SafeHouse") && isPrize()) {
+
+            if (location.getClass().getName().equals(SafeHouse.class.getName()) && isPrize()) {
                 System.out.println("You have fulfilled all the conditions and won the game!");
                 break;
             }
@@ -165,7 +176,7 @@ public class Player {
     }
 
     public boolean isPrize() {
-        return this.getInventory().isWater() == true && this.getInventory().isFirewood() == true && this.getInventory().isFood() == true;
+        return this.getInventory().isWater() && this.getInventory().isFirewood() && this.getInventory().isFood();
     }
 
     public String getName() {
@@ -216,5 +227,7 @@ public class Player {
     public void setInventory(Inventory inventory) {
         this.inventory = inventory;
     }
+
+
 
 }
