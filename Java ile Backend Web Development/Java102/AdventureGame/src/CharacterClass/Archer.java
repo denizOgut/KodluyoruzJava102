@@ -5,7 +5,7 @@ public class Archer extends  Character{
         super.setId(2);
         super.setDamage(7);
         super.setHealth(18);
-        super.setMoney(100);
+        super.setMoney(25);
 
     }
 }
