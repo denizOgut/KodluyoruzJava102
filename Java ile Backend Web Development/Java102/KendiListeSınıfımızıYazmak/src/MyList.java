@@ -13,13 +13,21 @@ public class MyList<T> {
     }
 
     public void add(T data) {
-        //T[] newArray = (T[]) new Object[this.array.length * 2];
-        for (int i = 0; i < this.array.length - 1; i++) {
+        int count = 0;
+        T []  newArray;
+        for (int i = 0; i < this.array.length; i++) {
             if (this.array[i] == null) {
                 this.array[i] = data;
                 break;
             }
         }
+
+            newArray = getArray();
+            this.array = (T[]) new Object[getDefLength() * 2];
+            for (int i = 0; i < newArray.length; i++) {
+                array[i] = newArray[i];
+            }
+
     }
 
     public int getDefLength() {
@@ -60,24 +68,41 @@ public class MyList<T> {
         }
     }
 
-    // remove funct yazılacak
 
-   public T set (int index , T data){
-       if ((index >= 0) && (index < array.length)){
-          return this.array[index] = data;
-       }else
-       {
-           return null;
-       }
-   }
+    public void remove(int index) {
+        if ((index >= 0) && (index < array.length && this.array[index] != null)){
+            for(int i =index; i<getArray().length; i++){
+                if (i + 1 < getArray().length){
+                    this.array[i] = this.array[i+1];
+                    if(this.array[i]==null){
+                        break;
+                    }
+                }else{
+                    this.array[i] = null;
+                }
+            }
+        }
 
-   public String toString(){
+    }
+
+    public T set(int index, T data) {
+        if ((index >= 0) && (index < array.length)) {
+            return this.array[index] = data;
+        } else {
+            return null;
+        }
+    }
+
+    public String toString() {
         StringBuilder text = new StringBuilder(" ");
 
-       for (T t : this.array) {
-           text.append(t).append(",");
-       }
-       return "[" + text.substring(0, text.length()-1) + "]";
-   }
+        for (T t : this.array) {
+            if (t != null) {
+                text.append(t).append(",");
+            }
+
+        }
+        return "[" + text.substring(0, text.length() - 1) + "]";
+    }
 
 }
