@@ -14,7 +14,7 @@ public class MyList<T> {
 
     public void add(T data) {
         int count = 0;
-        T []  newArray;
+        T[] newArray;
         for (int i = 0; i < this.array.length; i++) {
             if (this.array[i] == null) {
                 this.array[i] = data;
@@ -22,11 +22,11 @@ public class MyList<T> {
             }
         }
 
-            newArray = getArray();
-            this.array = (T[]) new Object[getDefLength() * 2];
-            for (int i = 0; i < newArray.length; i++) {
-                array[i] = newArray[i];
-            }
+        newArray = getArray();
+        this.array = (T[]) new Object[getDefLength() * 2];
+        for (int i = 0; i < newArray.length; i++) {
+            array[i] = newArray[i];
+        }
 
     }
 
@@ -70,14 +70,14 @@ public class MyList<T> {
 
 
     public void remove(int index) {
-        if ((index >= 0) && (index < array.length && this.array[index] != null)){
-            for(int i =index; i<getArray().length; i++){
-                if (i + 1 < getArray().length){
-                    this.array[i] = this.array[i+1];
-                    if(this.array[i]==null){
+        if ((index >= 0) && (index < array.length && this.array[index] != null)) {
+            for (int i = index; i < getArray().length; i++) {
+                if (i + 1 < getArray().length) {
+                    this.array[i] = this.array[i + 1];
+                    if (this.array[i] == null) {
                         break;
                     }
-                }else{
+                } else {
                     this.array[i] = null;
                 }
             }
@@ -93,9 +93,59 @@ public class MyList<T> {
         }
     }
 
+    public int indexOf(T data) {
+        for (int i = 0; i < this.array.length; i++) {
+            if (this.array[i] == data) {
+                return i;
+            }
+
+        }
+        return -1;
+    }
+
+    public int lastIndexOf(T data) {
+        int temp = 0;
+        for (int i = 0; i < this.array.length; i++) {
+            if (this.array[i] == data) {
+                temp = i;
+            }
+
+        }
+
+        return temp;
+    }
+
+    public T[] toArray() {
+        T[] newArray = this.array;
+        return newArray;
+    }
+
+    public void clear() {
+        for (int i = 0; i < this.array.length; i++) {
+            this.array[i] = null;
+        }
+    }
+
+    public MyList<T> subList(int start, int finish){
+        MyList<T> subMyList = new MyList<>(finish-start+1);
+        for(int i=0, j=start; j<=finish; i++, j++) {
+            subMyList.toArray()[i] = (T) this.getArray()[j];
+        }
+        return subMyList;
+    }
+
+    boolean contains(T data){
+        boolean isContains = false;
+        for (int i = 0; i < this.array.length; i++){
+         if (this.array[i] == data){
+             isContains = true;
+         }
+        }
+        return  isContains;
+    }
+
     public String toString() {
         StringBuilder text = new StringBuilder(" ");
-
         for (T t : this.array) {
             if (t != null) {
                 text.append(t).append(",");
@@ -105,4 +155,12 @@ public class MyList<T> {
         return "[" + text.substring(0, text.length() - 1) + "]";
     }
 
+    public boolean isEmpty() {
+        for (T t : this.getArray()) {
+            if (t != null) {
+                return false;
+            }
+        }
+        return true;
+    }
 }
