@@ -27,6 +27,5 @@ public class Main {
         for (Book book : newTreeSet) {
             System.out.println(book.getName() + ", " + book.getPageNumber());
         }
-
     }
 }
