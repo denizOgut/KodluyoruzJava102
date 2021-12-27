@@ -1,25 +1,27 @@
-package Account;
+package Main;
 
-import Address.Address;
+import Addresses.Address;
+import Addresses.BusinessAddress;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class User {
-    private String name,surname,email,password,job;
+    private String name, surname, email, password, job;
     private int age;
-    private ArrayList<Address> addressList;
-    private Date date;
+    private Date lastLogin;
+    List<Address> addressList = new ArrayList<Address>();
 
-    public User(String name, String surname, String email, String password, String job, int age, ArrayList<Address> addressList,Date date) {
+    public User(String name, String surname, String email, String password, String job, int age, Date lastLogin, List<Address> addressList) {
         this.name = name;
         this.surname = surname;
         this.email = email;
         this.password = password;
         this.job = job;
         this.age = age;
+        this.lastLogin = lastLogin;
         this.addressList = addressList;
-        this.date = date;
     }
 
     public String getName() {
@@ -58,14 +60,6 @@ public class User {
         return job;
     }
 
-    public Date getDate() {
-        return date;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
-    }
-
     public void setJob(String job) {
         this.job = job;
     }
@@ -78,11 +72,20 @@ public class User {
         this.age = age;
     }
 
-    public ArrayList<Address> getAddressList() {
+    public Date getLastLogin() {
+        return lastLogin;
+    }
+
+    public void setLastLogin(Date lastLogin) {
+        this.lastLogin = lastLogin;
+    }
+
+    public List<Address> getAddressList() {
         return addressList;
     }
 
-    public void setAddressList(ArrayList<Address> addressList) {
+    public void setAddressList(List<Address> addressList, BusinessAddress buisness) {
         this.addressList = addressList;
     }
+
 }
