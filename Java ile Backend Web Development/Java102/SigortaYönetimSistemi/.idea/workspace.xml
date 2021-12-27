@@ -4,32 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="df332daf-8cb2-470e-ad78-48ded7077b23" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../DBExample/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../DBExample/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../DBExample/.idea/libraries/postgresql_42_3_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../DBExample/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../DBExample/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../DBExample/.idea/runConfigurations.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../DBExample/.idea/sqldialects.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../DBExample/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../DBExample/DBExample.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../DBExample/out/production/DBExample/Readme.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../DBExample/src/DBConnect.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../DBExample/src/Readme.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Readme.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Account/Account.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Account/Enterprise.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Account/Individual.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Account/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Address/Address.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Address/BusinessAddress.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Address/HomeAddress.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/Main.java" afterDir="false" />
-    </list>
+    <list default="true" id="df332daf-8cb2-470e-ad78-48ded7077b23" name="Changes" comment="sigorta yonetım sıstemı" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -90,8 +65,16 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1640596314273</updated>
-      <workItem from="1640596317111" duration="12535000" />
+      <workItem from="1640596317111" duration="12849000" />
     </task>
+    <task id="LOCAL-00001" summary="sigorta yonetım sıstemı">
+      <created>1640623016559</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1640623016559</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -107,5 +90,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="sigorta yonetım sıstemı" />
+    <option name="LAST_COMMIT_MESSAGE" value="sigorta yonetım sıstemı" />
   </component>
 </project>
