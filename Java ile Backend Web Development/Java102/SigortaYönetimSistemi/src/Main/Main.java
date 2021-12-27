@@ -13,11 +13,19 @@ public class Main {
     public static void main(String[] args) {
         BusinessAddress businessAddress = new BusinessAddress("buisness");
         HomeAddress homeAddress = new HomeAddress("Home");
+<<<<<<< HEAD
         List<Address> addressList = new ArrayList<>();
         addressList.add(homeAddress);
         addressList.add(businessAddress);
         User user = new User("Deniz", "Ogut", "deniz@gmail.com", "123456", "Yazılım Geliştirici", 28, new Date(),addressList);
 
+=======
+        List <Address> addressList = new ArrayList<>();
+        addressList.add(homeAddress);
+        addressList.add(businessAddress);
+        User user = new User("Deniz", "Ogut", "deniz@gmail.com", "123456", "Yazılım Geliştirici", 28, new Date(),
+                addressList);
+>>>>>>> ef61c8e (sigorta yonetım sıstemı)
         Individual individual = new Individual(user);
         individual.showUserInfo(user);
     }

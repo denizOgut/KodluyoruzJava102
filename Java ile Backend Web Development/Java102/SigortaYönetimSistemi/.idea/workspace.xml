@@ -4,6 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
+<<<<<<< HEAD
     <list default="true" id="df332daf-8cb2-470e-ad78-48ded7077b23" name="Changes" comment="sigorta yonetım sıstemı">
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
@@ -17,6 +18,33 @@
       <change beforePath="$PROJECT_DIR$/src/Account/Enterprise.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Account/Enterprise.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Account/Individual.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Account/Individual.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/User.java" afterDir="false" />
+=======
+    <list default="true" id="df332daf-8cb2-470e-ad78-48ded7077b23" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../DBExample/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DBExample/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DBExample/.idea/libraries/postgresql_42_3_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DBExample/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DBExample/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DBExample/.idea/runConfigurations.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DBExample/.idea/sqldialects.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DBExample/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DBExample/DBExample.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DBExample/out/production/DBExample/Readme.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DBExample/src/DBConnect.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DBExample/src/Readme.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Readme.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Account/Account.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Account/Enterprise.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Account/Individual.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Account/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Address/Address.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Address/BusinessAddress.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Address/HomeAddress.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/Main.java" afterDir="false" />
+>>>>>>> ef61c8e (sigorta yonetım sıstemı)
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,9 +60,12 @@
       </list>
     </option>
   </component>
+<<<<<<< HEAD
   <component name="Git.Rebase.Settings">
     <option name="NEW_BASE" value="KodluyoruzJava102/main" />
   </component>
+=======
+>>>>>>> ef61c8e (sigorta yonetım sıstemı)
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
   </component>
@@ -81,6 +112,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1640596314273</updated>
+<<<<<<< HEAD
       <workItem from="1640596317111" duration="13364000" />
     </task>
     <task id="LOCAL-00001" summary="sigorta yonetım sıstemı">
@@ -98,6 +130,10 @@
       <updated>1640623318572</updated>
     </task>
     <option name="localTasksCounter" value="3" />
+=======
+      <workItem from="1640596317111" duration="12535000" />
+    </task>
+>>>>>>> ef61c8e (sigorta yonetım sıstemı)
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -114,8 +150,11 @@
       </map>
     </option>
   </component>
+<<<<<<< HEAD
   <component name="VcsManagerConfiguration">
     <MESSAGE value="sigorta yonetım sıstemı" />
     <option name="LAST_COMMIT_MESSAGE" value="sigorta yonetım sıstemı" />
   </component>
+=======
+>>>>>>> ef61c8e (sigorta yonetım sıstemı)
 </project>
