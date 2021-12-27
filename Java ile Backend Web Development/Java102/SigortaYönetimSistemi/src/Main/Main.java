@@ -13,11 +13,11 @@ public class Main {
     public static void main(String[] args) {
         BusinessAddress businessAddress = new BusinessAddress("buisness");
         HomeAddress homeAddress = new HomeAddress("Home");
-        List <Address> addressList = new ArrayList<>();
+        List<Address> addressList = new ArrayList<>();
         addressList.add(homeAddress);
         addressList.add(businessAddress);
-        User user = new User("Deniz", "Ogut", "deniz@gmail.com", "123456", "Yazılım Geliştirici", 28, new Date(),
-                addressList);
+        User user = new User("Deniz", "Ogut", "deniz@gmail.com", "123456", "Yazılım Geliştirici", 28, new Date(),addressList);
+
         Individual individual = new Individual(user);
         individual.showUserInfo(user);
     }
