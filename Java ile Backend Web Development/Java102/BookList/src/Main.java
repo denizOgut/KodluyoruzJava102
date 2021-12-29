@@ -25,7 +25,7 @@ public class Main {
         Map<String, String> bookMap = new HashMap(bookList.stream().collect(Collectors.toMap(Book::getName, Book::getAuthorName)));
 
         bookMap.forEach((key, value) -> {
-            System.out.println(" ");
+            System.out.println("---------------------------------------------------------- ");
             System.out.println(key + " - " + value + " ");
         });
 
