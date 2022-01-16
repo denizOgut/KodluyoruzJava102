@@ -2,14 +2,18 @@ package com.patikadev.View;
 
 import com.patikadev.Helper.Config;
 import com.patikadev.Helper.Helper;
+import com.patikadev.Model.Student;
 
 import javax.swing.*;
 import java.awt.*;
 
+
 public class StudentGUI extends JFrame {
+    private final Student student;
     private JPanel wrapper;
 
-    public StudentGUI() throws HeadlessException {
+    public StudentGUI(Student student) throws HeadlessException {
+        this.student = student;
         add(wrapper);
         setSize(200, 200);
         setSize(new Dimension(1000, 500));
@@ -18,4 +22,7 @@ public class StudentGUI extends JFrame {
         setTitle(Config.PROJECT_TITLE);
         setVisible(true);
     }
+
+
+
 }
