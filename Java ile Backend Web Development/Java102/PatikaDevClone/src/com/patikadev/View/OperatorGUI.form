@@ -129,9 +129,8 @@
                     </constraints>
                     <properties>
                       <model>
-                        <item value="operator"/>
+                        <item value=""/>
                         <item value="educator"/>
-                        <item value="student"/>
                       </model>
                     </properties>
                   </component>

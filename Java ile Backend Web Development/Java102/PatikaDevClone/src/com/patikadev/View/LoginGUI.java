@@ -2,6 +2,7 @@ package com.patikadev.View;
 
 import com.patikadev.Helper.Config;
 import com.patikadev.Helper.Helper;
+import com.patikadev.Model.Educator;
 import com.patikadev.Model.Operator;
 import com.patikadev.Model.Student;
 import com.patikadev.Model.User;
@@ -61,13 +62,14 @@ public class LoginGUI extends JFrame {
                                         OperatorGUI operatorGUI = new OperatorGUI((Operator) user);
                                         break;
                                     case "educator":
-                                        EducatorGUI educatorGUI = new EducatorGUI();
+
+                                        EducatorGUI educatorGUI = new EducatorGUI((Educator) user);
                                         break;
                                     case "student":
                                         StudentGUI studentGUI = new StudentGUI((Student) user);
                                         break;
                                 }
-                                wrapperLogin.setVisible(false);
+                                dispose();
 
                             }
                         } catch (SQLException | UnsupportedLookAndFeelException | ClassNotFoundException | InstantiationException | IllegalAccessException ex) {

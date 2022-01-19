@@ -3,10 +3,7 @@ package com.patikadev.View;
 import com.patikadev.Helper.Config;
 import com.patikadev.Helper.Helper;
 import com.patikadev.Helper.Item;
-import com.patikadev.Model.Course;
-import com.patikadev.Model.Operator;
-import com.patikadev.Model.Patika;
-import com.patikadev.Model.User;
+import com.patikadev.Model.*;
 
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
@@ -197,26 +194,25 @@ public class OperatorGUI extends JFrame {
         tbl_course_list.getTableHeader().setReorderingAllowed(false);
 
 
-        loadPatikaModel();
         loadCourseModel();
-        loadPatikaCombo();
         loadEducatorCombo();
-
+        loadPatikaModel();
+        loadPatikaCombo();
         btn_user_add.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                User user = new User();
+                User educator = new Educator();
                 if (fld_user_name.getText().isEmpty() || fld_user_username.getText().isEmpty() || fld_user_password.getText().isEmpty() ||
                         fld_user_surname.getText().isEmpty() || cmb_user_type.getSelectedItem() == null) {
                     Helper.showMessage("fill");
                 } else {
-                    user.setName(fld_user_name.getText());
-                    user.setPassword(fld_user_password.getText());
-                    user.setUsername(fld_user_username.getText());
-                    user.setSurname(fld_user_surname.getText());
-                    user.setType(cmb_user_type.getSelectedItem().toString());
+                    educator.setName(fld_user_name.getText());
+                    educator.setPassword(fld_user_password.getText());
+                    educator.setUsername(fld_user_username.getText());
+                    educator.setSurname(fld_user_surname.getText());
+                    educator.setType(cmb_user_type.getSelectedItem().toString());
                     try {
-                        User.addUser(user);
+                        User.addUser(educator);
                         loadUserModel();
                         loadEducatorCombo();
                     } catch (SQLException ex) {
@@ -326,12 +322,13 @@ public class OperatorGUI extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 dispose();
                 LoginGUI loginGUI = new LoginGUI();
+
             }
         });
     }
 
     private void loadCourseModel() throws SQLException {
-        DefaultTableModel clearModel = (DefaultTableModel) tbl_patika_list.getModel();
+        DefaultTableModel clearModel = (DefaultTableModel) tbl_course_list.getModel();
         clearModel.setRowCount(0);
         for (Course course : Course.showAllCourse()) {
             row_course_list[0] = course.getId();

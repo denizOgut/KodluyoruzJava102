@@ -48,6 +48,21 @@ public class Patika {
         return patikaList;
     }
 
+    public static ArrayList<Patika> showAllPatikaByUser(int patika_id) throws SQLException {
+        String query = "SELECT * FROM public.patika WHERE id = " + patika_id;
+        ArrayList<Patika> patikaList = new ArrayList<>();
+        PreparedStatement preparedStatement = DBConnecter.getInstance().prepareStatement(query);
+        ResultSet resultSet = preparedStatement.executeQuery();
+        while (resultSet.next()) {
+            int id = resultSet.getInt("id");
+            String name = resultSet.getString("name");
+
+            Patika patika = new Patika(id, name);
+            patikaList.add(patika);
+        }
+        return patikaList;
+    }
+
     public static int addPatika(Patika patika) throws SQLException {
         int result = 0;
         String columnNames[] = new String[]{"id"};
