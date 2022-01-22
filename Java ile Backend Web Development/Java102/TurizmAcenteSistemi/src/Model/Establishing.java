@@ -1,0 +1,11 @@
+package Model;
+
+public enum Establishing {
+    UCRETSIZOTOPARK,
+    UCRETSIZWIFI,
+    YUZMEHAVUZU,
+    FITNESSSCREEN,
+    HOTELCONCIERGE,
+    SPA,
+    ODASERVICEFULLTIME;
+}

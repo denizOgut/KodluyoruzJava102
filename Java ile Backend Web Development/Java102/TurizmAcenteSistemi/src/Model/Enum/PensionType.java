@@ -1,0 +1,11 @@
+package Model.Enum;
+
+public enum PensionType {
+    ULTRAHERSEYDAHIL,
+    HERSEYDAHIL,
+    ODAKAHVALTI,
+    TAMPANSIYON,
+    YARIMPANSIYON,
+    SADECEYATAK,
+    ALKOLHARICFULLCREDIT,
+}

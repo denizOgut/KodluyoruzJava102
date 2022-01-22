@@ -25,6 +25,7 @@ public class EducatorGUI extends JFrame {
     private JComboBox cmb_content_patika;
     private JComboBox cmb_content_course;
     private JButton btn_save;
+    private JTextField textField1;
     private final Educator educator;
     private DefaultTableModel mdl_course_list;
     private Object[] row_course_list;
