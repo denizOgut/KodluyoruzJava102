@@ -1,13 +1,14 @@
 package Model;
 
+import Model.Enum.Establishing;
 import Model.Enum.PensionType;
 import Model.Enum.RoomType;
 
 import java.util.HashMap;
 
 public class Hotel {
-    private String name, address, email;
-    private int star;
+    private String name, address, email, konum;
+    private int star,price;
     private Establishing establishing;
     private PensionType pensionType;
     private Room room;
@@ -16,7 +17,7 @@ public class Hotel {
     public Hotel() {
     }
 
-    public Hotel(String name, String address, String email, int star, Establishing establishing, PensionType pensionType, Room room,HashMap<RoomType, Integer> roomMap) {
+    public Hotel(String name, String address, String email, int star, Establishing establishing, PensionType pensionType, Room room, String konum, HashMap<RoomType, Integer> roomMap,int price) {
         this.name = name;
         this.address = address;
         this.email = email;
@@ -24,7 +25,9 @@ public class Hotel {
         this.establishing = establishing;
         this.pensionType = pensionType;
         this.room = room;
+        this.konum = konum;
         this.roomMap = roomMap;
+        this.price = price;
     }
 
     public String getName() {
@@ -88,6 +91,22 @@ public class Hotel {
     }
 
     public void setroomMap(HashMap<RoomType, Integer> roomMap) {
+        this.roomMap = roomMap;
+    }
+
+    public String getKonum() {
+        return konum;
+    }
+
+    public void setKonum(String konum) {
+        this.konum = konum;
+    }
+
+    public HashMap<RoomType, Integer> getRoomMap() {
+        return roomMap;
+    }
+
+    public void setRoomMap(HashMap<RoomType, Integer> roomMap) {
         this.roomMap = roomMap;
     }
 }

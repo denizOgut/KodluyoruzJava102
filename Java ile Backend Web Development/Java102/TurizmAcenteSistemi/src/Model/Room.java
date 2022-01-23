@@ -1,16 +1,18 @@
 package Model;
 
+import java.util.Date;
 import java.util.HashMap;
 
 public class Room {
     private int yatakSayısı,metreKare;
     private boolean tv,miniBar,oyunKonsolu,kasa,projeksiyon;
+    private Date enterDate, exitDate;
 
 
     public Room() {
     }
 
-    public Room(int yatakSayısı, int metreKare, boolean tv, boolean miniBar, boolean oyunKonsolu, boolean kasa, boolean projeksiyon) {
+    public Room(int yatakSayısı, int metreKare, boolean tv, boolean miniBar, boolean oyunKonsolu, boolean kasa, boolean projeksiyon,Date enterDate,Date exitDate) {
         this.yatakSayısı = yatakSayısı;
         this.metreKare = metreKare;
         this.tv = tv;
@@ -18,6 +20,8 @@ public class Room {
         this.oyunKonsolu = oyunKonsolu;
         this.kasa = kasa;
         this.projeksiyon = projeksiyon;
+        this.enterDate = enterDate;
+        this.exitDate = exitDate;
 
     }
 
@@ -77,4 +81,19 @@ public class Room {
         this.projeksiyon = projeksiyon;
     }
 
+    public Date getEnterDate() {
+        return enterDate;
+    }
+
+    public void setEnterDate(Date enterDate) {
+        this.enterDate = enterDate;
+    }
+
+    public Date getExitDate() {
+        return exitDate;
+    }
+
+    public void setExitDate(Date exitDate) {
+        this.exitDate = exitDate;
+    }
 }

@@ -4,7 +4,7 @@ import Model.Enum.UserType;
 
 public class User {
     private String name,surname,userName,mail;
-    private int age,idNo,mobilePhone;
+    private int age, kimlikNo,mobilePhone;
     private UserType userType;
 
     public User() {
@@ -16,7 +16,7 @@ public class User {
         this.userName = userName;
         this.mail = mail;
         this.age = age;
-        this.idNo = idNo;
+        this.kimlikNo = idNo;
         this.mobilePhone = mobilePhone;
         this.userType = userType;
     }
@@ -61,12 +61,12 @@ public class User {
         this.age = age;
     }
 
-    public int getIdNo() {
-        return idNo;
+    public int getKimlikNo() {
+        return kimlikNo;
     }
 
-    public void setIdNo(int idNo) {
-        this.idNo = idNo;
+    public void setKimlikNo(int kimlikNo) {
+        this.kimlikNo = kimlikNo;
     }
 
     public int getMobilePhone() {

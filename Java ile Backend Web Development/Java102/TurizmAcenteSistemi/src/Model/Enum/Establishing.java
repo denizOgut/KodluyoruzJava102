@@ -1,4 +1,4 @@
-package Model;
+package Model.Enum;
 
 public enum Establishing {
     UCRETSIZOTOPARK,
@@ -7,5 +7,5 @@ public enum Establishing {
     FITNESSSCREEN,
     HOTELCONCIERGE,
     SPA,
-    ODASERVICEFULLTIME;
+    ODASERVICEFULLTIME
 }
