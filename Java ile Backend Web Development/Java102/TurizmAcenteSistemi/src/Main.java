@@ -1,12 +1,13 @@
 import Helper.DBHelper;
+import Wiev.HotelManagmentGUI;
 
+import javax.swing.*;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args) throws SQLException {
+    public static void main(String[] args) throws SQLException, UnsupportedLookAndFeelException, ClassNotFoundException, InstantiationException, IllegalAccessException {
         String query = "SELECT * FROM [TurizmAcenteSistemi].[dbo].[hotel]";
         PreparedStatement preparedStatement;
         preparedStatement = DBHelper.getInstance().prepareStatement(query);
@@ -19,7 +20,6 @@ public class Main {
             System.out.println("Email : " + resultSet.getString("email"));
             System.out.println("Konum : " + resultSet.getString("konum"));
             System.out.println("Yıldız : " + resultSet.getInt("yıldız"));
-            System.out.println("Fiyat : " + resultSet.getInt("fiyat"));
             System.out.println("RoomId : " + resultSet.getInt("roomid"));
             System.out.println("RoomType : " + resultSet.getString("roomtype"));
             System.out.println("RoomNumber: " + resultSet.getInt("roomstorage"));
@@ -27,7 +27,7 @@ public class Main {
             System.out.println("PensionType : " + resultSet.getString("pensiontype"));
             System.out.println("###################################################");
         }
-
+        HotelManagmentGUI hotelManagmentGUI = new HotelManagmentGUI();
         }
     }
 

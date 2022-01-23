@@ -8,16 +8,16 @@ import java.util.HashMap;
 
 public class Hotel {
     private String name, address, email, konum;
-    private int star,price;
-    private Establishing establishing;
-    private PensionType pensionType;
+    private int star;
+    private String establishing;
+    private String pensionType;
     private Room room;
     private HashMap<RoomType, Integer> roomMap;
 
     public Hotel() {
     }
 
-    public Hotel(String name, String address, String email, int star, Establishing establishing, PensionType pensionType, Room room, String konum, HashMap<RoomType, Integer> roomMap,int price) {
+    public Hotel(String name, String address, String email, int star, String establishing, String pensionType, Room room, String konum, HashMap<RoomType, Integer> roomMap) {
         this.name = name;
         this.address = address;
         this.email = email;
@@ -27,7 +27,7 @@ public class Hotel {
         this.room = room;
         this.konum = konum;
         this.roomMap = roomMap;
-        this.price = price;
+
     }
 
     public String getName() {
@@ -62,19 +62,19 @@ public class Hotel {
         this.star = star;
     }
 
-    public Establishing getEstablishing() {
+    public String getEstablishing() {
         return establishing;
     }
 
-    public void setEstablishing(Establishing establishing) {
+    public void setEstablishing(String establishing) {
         this.establishing = establishing;
     }
 
-    public PensionType getPensionType() {
+    public String getPensionType() {
         return pensionType;
     }
 
-    public void setPensionType(PensionType pensionType) {
+    public void setPensionType(String pensionType) {
         this.pensionType = pensionType;
     }
 

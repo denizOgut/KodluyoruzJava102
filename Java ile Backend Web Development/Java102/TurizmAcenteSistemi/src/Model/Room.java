@@ -1,5 +1,8 @@
 package Model;
 
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.Date;
 import java.util.HashMap;
 
@@ -96,4 +99,16 @@ public class Room {
     public void setExitDate(Date exitDate) {
         this.exitDate = exitDate;
     }
+
+/*    public static Room getFetch(int id) throws SQLException {
+        Room obj = null;
+        String query = "SELECT * FROM [TurizmAcenteSistemi].[dbo].[room] WHERE id = ?";
+        PreparedStatement preparedStatement = DBHelper.getInstance().prepareStatement(query);
+        preparedStatement.setInt(1, id);
+        ResultSet resultSet = preparedStatement.executeQuery();
+        if (resultSet.next()) {
+            obj = new Patika(resultSet.getInt("id"), resultSet.getString("name"));burası dolduralacak
+        }
+        return obj;
+    }*/
 }
