@@ -1,5 +1,7 @@
 package Model;
 
+import Helper.DBHelper;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -7,7 +9,7 @@ import java.util.Date;
 import java.util.HashMap;
 
 public class Room {
-    private int yatakSayısı,metreKare;
+    private int yatakSayısı,metreKare,id;
     private boolean tv,miniBar,oyunKonsolu,kasa,projeksiyon;
     private Date enterDate, exitDate;
 
@@ -15,7 +17,7 @@ public class Room {
     public Room() {
     }
 
-    public Room(int yatakSayısı, int metreKare, boolean tv, boolean miniBar, boolean oyunKonsolu, boolean kasa, boolean projeksiyon,Date enterDate,Date exitDate) {
+    public Room(int yatakSayısı, int metreKare, boolean tv, boolean miniBar, boolean oyunKonsolu, boolean kasa, boolean projeksiyon,Date enterDate,Date exitDate,int id) {
         this.yatakSayısı = yatakSayısı;
         this.metreKare = metreKare;
         this.tv = tv;
@@ -25,6 +27,7 @@ public class Room {
         this.projeksiyon = projeksiyon;
         this.enterDate = enterDate;
         this.exitDate = exitDate;
+        this.id = id;
 
     }
 
@@ -100,15 +103,34 @@ public class Room {
         this.exitDate = exitDate;
     }
 
-/*    public static Room getFetch(int id) throws SQLException {
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public static Room getFetch(int id) throws SQLException {
         Room obj = null;
         String query = "SELECT * FROM [TurizmAcenteSistemi].[dbo].[room] WHERE id = ?";
         PreparedStatement preparedStatement = DBHelper.getInstance().prepareStatement(query);
         preparedStatement.setInt(1, id);
         ResultSet resultSet = preparedStatement.executeQuery();
         if (resultSet.next()) {
-            obj = new Patika(resultSet.getInt("id"), resultSet.getString("name"));burası dolduralacak
+            obj = new Room();
+            obj.setId(resultSet.getInt("id"));
+            obj.setYatakSayısı(resultSet.getInt("yataksayısı"));
+            obj.setMetreKare(resultSet.getInt("metrekare"));
+            obj.setTv(resultSet.getBoolean("tv"));
+            obj.setProjeksiyon(resultSet.getBoolean("projeksiyon"));
+            obj.setMiniBar(resultSet.getBoolean("minibar"));
+            obj.setOyunKonsolu(resultSet.getBoolean("oyunkonsolu"));
+            obj.setKasa(resultSet.getBoolean("kasa"));
+            obj.setEnterDate(resultSet.getDate("enterDate"));
+            obj.setExitDate(resultSet.getDate("exitDate"));
+
         }
         return obj;
-    }*/
+    }
 }

@@ -28,6 +28,7 @@ public class Main {
             System.out.println("###################################################");
         }
         HotelManagmentGUI hotelManagmentGUI = new HotelManagmentGUI();
+
         }
     }
 
