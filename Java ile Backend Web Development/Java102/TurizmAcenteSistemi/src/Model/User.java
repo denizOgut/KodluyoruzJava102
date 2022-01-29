@@ -1,10 +1,15 @@
 package Model;
 
+import Helper.DBHelper;
 import Model.Enum.UserType;
 
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 public class User {
-    private String name,surname,userName,mail;
-    private int age, kimlikNo,mobilePhone;
+    private String name, surname, userName, mail;
+    private int age, kimlikNo, mobilePhone;
     private UserType userType;
 
     public User() {
@@ -82,11 +87,24 @@ public class User {
     }
 
     public void setUserType() {
-        if (this.age < 12){
+        if (this.age < 12) {
             this.userType = UserType.COCUK;
-        }else{
+        } else {
             this.userType = UserType.YETISKIN;
         }
 
+    }
+
+    public static User getFetch(String username) throws SQLException {
+        User obj = null;
+        String query = "SELECT * FROM [TurizmAcenteSistemi].[dbo].[user] WHERE [username] = ? ";
+        PreparedStatement preparedStatement = DBHelper.getInstance().prepareStatement(query);
+        preparedStatement.setString(1, username);
+        ResultSet resultSet = preparedStatement.executeQuery();
+        if (resultSet.next()) {
+            obj = new User();
+        }
+
+        return obj;
     }
 }

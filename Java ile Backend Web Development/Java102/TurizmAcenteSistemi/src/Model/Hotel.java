@@ -3,10 +3,13 @@ package Model;
 import Helper.DBHelper;
 
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Hotel {
+    public static ArrayList<Hotel> showHotelResultList;
     private String name, address, email, konum, roomType;
     private int star, price, id, roomStorage;
     private String establishing;
@@ -170,6 +173,28 @@ public class Hotel {
         }
         return result;
     }
+    public static ArrayList<String> showHotelAddress() throws SQLException {
+        ArrayList<String> roomAddressList = new ArrayList<>();;
+        String query = "SELECT address FROM [TurizmAcenteSistemi].[dbo].[hotel]";
+        PreparedStatement preparedStatement = DBHelper.getInstance().prepareStatement(query);
+        ResultSet resultSet = preparedStatement.executeQuery();
+        while(resultSet.next()) {
+            String address = String.valueOf(resultSet.getInt("address"));
+            roomAddressList.add(address);
+        }
+        return roomAddressList;
+    }
 
+    public static ArrayList<String> showHotelKonum() throws SQLException {
+        ArrayList<String> hotelKonumList = new ArrayList<>();;
+        String query = "SELECT DISTINCT konum FROM [TurizmAcenteSistemi].[dbo].[hotel]";
+        PreparedStatement preparedStatement = DBHelper.getInstance().prepareStatement(query);
+        ResultSet resultSet = preparedStatement.executeQuery();
+        while(resultSet.next()) {
+            String konum = String.valueOf(resultSet.getString("konum"));
+            hotelKonumList.add(konum);
+        }
+        return hotelKonumList;
+    }
 
 }
