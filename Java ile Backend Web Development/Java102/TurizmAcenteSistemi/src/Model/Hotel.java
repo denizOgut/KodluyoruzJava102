@@ -6,10 +6,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 
 public class Hotel {
-    public static ArrayList<Hotel> showHotelResultList;
+    public static ArrayList<Hotel> showHotelResultList = new ArrayList<>();
     private String name, address, email, konum, roomType;
     private int star, price, id, roomStorage;
     private String establishing;
@@ -165,20 +166,22 @@ public class Hotel {
         preparedStatement.setString(9, hotel.getEstablishing());
         preparedStatement.setString(10, hotel.getPensionType());
         result = preparedStatement.executeUpdate();
-        if (result == 1){
+        if (result == 1) {
             java.sql.ResultSet generatedKeys = preparedStatement.getGeneratedKeys();
-            if (generatedKeys.next()){
+            if (generatedKeys.next()) {
                 hotel.setId(generatedKeys.getInt(1));
             }
         }
         return result;
     }
+
     public static ArrayList<String> showHotelAddress() throws SQLException {
-        ArrayList<String> roomAddressList = new ArrayList<>();;
+        ArrayList<String> roomAddressList = new ArrayList<>();
+        ;
         String query = "SELECT address FROM [TurizmAcenteSistemi].[dbo].[hotel]";
         PreparedStatement preparedStatement = DBHelper.getInstance().prepareStatement(query);
         ResultSet resultSet = preparedStatement.executeQuery();
-        while(resultSet.next()) {
+        while (resultSet.next()) {
             String address = String.valueOf(resultSet.getInt("address"));
             roomAddressList.add(address);
         }
@@ -186,15 +189,44 @@ public class Hotel {
     }
 
     public static ArrayList<String> showHotelKonum() throws SQLException {
-        ArrayList<String> hotelKonumList = new ArrayList<>();;
+        ArrayList<String> hotelKonumList = new ArrayList<>();
+        ;
         String query = "SELECT DISTINCT konum FROM [TurizmAcenteSistemi].[dbo].[hotel]";
         PreparedStatement preparedStatement = DBHelper.getInstance().prepareStatement(query);
         ResultSet resultSet = preparedStatement.executeQuery();
-        while(resultSet.next()) {
+        while (resultSet.next()) {
             String konum = String.valueOf(resultSet.getString("konum"));
             hotelKonumList.add(konum);
         }
         return hotelKonumList;
+    }
+
+    public static ArrayList<Hotel> showHotelSearchResult(Date dateEnter, Date dateExit,String konum) throws SQLException {
+        Hotel hotel = null;
+        String query = "SELECT * FROM TurizmAcenteSistemi.dbo.hotel , TurizmAcenteSistemi.dbo.room WHERE hotel.roomid = room.id AND (room.enterDate  NOT BETWEEN ? AND ? \n" +
+                "OR room.exitDate NOT  BETWEEN ? AND ?) AND konum = ? ";
+        PreparedStatement preparedStatement = DBHelper.getInstance().prepareStatement(query);
+        preparedStatement.setDate(1, (java.sql.Date) dateEnter);
+        preparedStatement.setDate(2, (java.sql.Date) dateExit);
+        preparedStatement.setDate(3, (java.sql.Date) dateEnter);
+        preparedStatement.setDate(4, (java.sql.Date) dateExit);
+        preparedStatement.setString(5, konum);
+        ResultSet resultSet = preparedStatement.executeQuery();
+        while (resultSet.next()) {
+            hotel = new Hotel();
+            hotel.setId(resultSet.getInt("id"));
+            hotel.setName(resultSet.getString("name"));
+            hotel.setEstablishing(resultSet.getString("establishing"));
+            hotel.setPensionType(resultSet.getString("pensiontype"));
+            hotel.setAddress(resultSet.getString("address"));
+            hotel.setEmail(resultSet.getString("email"));
+            hotel.setRoomType(resultSet.getString("roomtype"));
+            hotel.setRoomStorage(resultSet.getInt("roomstorage"));
+            hotel.setRoom(Room.getFetch(resultSet.getInt("roomid")));
+            hotel.setStar(resultSet.getInt("yıldız"));
+            showHotelResultList.add(hotel);
+        }
+        return showHotelResultList;
     }
 
 }

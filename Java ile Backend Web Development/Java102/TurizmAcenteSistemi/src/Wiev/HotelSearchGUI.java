@@ -37,15 +37,27 @@ public class HotelSearchGUI extends JFrame {
         btn_search.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String [] guestInfo = txt_guest_info.getText().split(",");
-                SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
+                String[] guestInfo = txt_guest_info.getText().split(",");
+                Date dateEnter = null;
+                Date dateExit = null;
+                java.sql.Date sqlDateExit = null;
+                java.sql.Date sqlDateEnter = null;
+                String konum = cmb_hotel_konum.getSelectedItem().toString();
                 try {
-                    java.util.Date dateExit = formatter.parse(txt_enter_date.getText());
-                    java.util.Date dateEnter = formatter.parse(txt_exit_date.getText());
+                    SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
+                    dateEnter = formatter.parse(txt_enter_date.getText());
+                    dateExit = formatter.parse(txt_exit_date.getText());
+                    sqlDateEnter = new java.sql.Date(dateEnter.getTime());
+                    sqlDateExit = new java.sql.Date(dateExit.getTime());
                 } catch (ParseException ex) {
                     ex.printStackTrace();
                 }
-                    //Bu kısıma query giricek ve
+                try {
+                    Hotel.showHotelSearchResult(sqlDateEnter, sqlDateExit,konum);
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
+
             }
         });
     }

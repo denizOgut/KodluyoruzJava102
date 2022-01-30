@@ -13,6 +13,7 @@ public class Main {
 
             // LoginGUI loginGUI = new LoginGUI();
         HotelSearchGUI hotelSearchGUI = new HotelSearchGUI();
+
         }
     }
 
