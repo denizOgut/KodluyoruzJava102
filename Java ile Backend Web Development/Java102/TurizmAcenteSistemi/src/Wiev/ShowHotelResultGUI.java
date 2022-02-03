@@ -23,7 +23,8 @@ public class ShowHotelResultGUI extends JFrame {
     private JPanel panel1;
     private DefaultTableModel mdl_hotel_list;
     private Object[] row_hotel_list;
-    public static Room room;
+    public static Room selectedRoom;
+    public static Hotel selectedHotel;
     public ShowHotelResultGUI() throws UnsupportedLookAndFeelException, ClassNotFoundException, InstantiationException, IllegalAccessException, SQLException {
 
         add(wrapper);
@@ -58,10 +59,11 @@ public class ShowHotelResultGUI extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    Hotel hotel = Hotel.getFetch(Integer.parseInt(txt_hotel_id.getText()));
-                    room = Room.getFetch(hotel.getRoom().getId());
-                    System.out.println(room.getId() + " --- "+room.getYatakSayısı()+ " --- "+room.getMetreKare());
-                } catch (SQLException ex) {
+                    selectedHotel = Hotel.getFetch(Integer.parseInt(txt_hotel_id.getText()));
+                    selectedRoom = Room.getFetch(selectedHotel.getRoom().getId());
+                    RoomDetailsGUI roomDetailsGUI = new RoomDetailsGUI();
+                    dispose();
+                } catch (SQLException | UnsupportedLookAndFeelException | ClassNotFoundException | InstantiationException | IllegalAccessException ex) {
                     ex.printStackTrace();
                 }
             }
@@ -71,7 +73,7 @@ public class ShowHotelResultGUI extends JFrame {
     public void loadHotelModel() throws SQLException {
         DefaultTableModel clearModel = (DefaultTableModel) hotel_data_table.getModel();
         clearModel.setRowCount(0);
-        for (Hotel hotel : Hotel.showAllHotel()) { // Gecıcı kalıcak
+        for (Hotel hotel : Hotel.showHotelResultList) {
             row_hotel_list[0] = hotel.getId();
             row_hotel_list[1] = hotel.getName();
             row_hotel_list[2] = hotel.getAddress();

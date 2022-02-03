@@ -38,6 +38,8 @@ public class Hotel {
 
     }
 
+
+
     public int getId() {
         return id;
     }
@@ -175,6 +177,14 @@ public class Hotel {
         return result;
     }
 
+    public static void updateHotel(int id) throws SQLException {
+        String query = "UPDATE [dbo].[hotel] SET [roomstorage] = roomstorage -1 WHERE id = ?";
+        PreparedStatement preparedStatement = DBHelper.getInstance().prepareStatement(query);
+        preparedStatement.setInt(1,id);
+        ResultSet resultSet =  preparedStatement.executeQuery();
+
+    }
+
     public static ArrayList<String> showHotelAddress() throws SQLException {
         ArrayList<String> roomAddressList = new ArrayList<>();
         ;
@@ -229,29 +239,6 @@ public class Hotel {
         return showHotelResultList;
     }
 
-    public static ArrayList<Hotel> showAllHotel() throws SQLException {
-        ArrayList<Hotel> hotelList = new ArrayList<>();
-        Hotel hotel = null;
-        String query = "SELECT * FROM TurizmAcenteSistemi.dbo.hotel , TurizmAcenteSistemi.dbo.room WHERE hotel.roomid = room.id ";
-        PreparedStatement preparedStatement = DBHelper.getInstance().prepareStatement(query);
-        ResultSet resultSet = preparedStatement.executeQuery();
-        while (resultSet.next()) {
-            hotel = new Hotel();
-            hotel.setId(resultSet.getInt("id"));
-            hotel.setName(resultSet.getString("name"));
-            hotel.setEstablishing(resultSet.getString("establishing"));
-            hotel.setPensionType(resultSet.getString("pensiontype"));
-            hotel.setAddress(resultSet.getString("address"));
-            hotel.setKonum(resultSet.getString("konum"));
-            hotel.setEmail(resultSet.getString("email"));
-            hotel.setRoomType(resultSet.getString("roomtype"));
-            hotel.setRoomStorage(resultSet.getInt("roomstorage"));
-            hotel.setRoom(Room.getFetch(resultSet.getInt("roomid")));
-            hotel.setStar(resultSet.getInt("yıldız"));
-            hotelList.add(hotel);
-        }
-        return hotelList;
-    }
 
     public static Hotel getFetch(int id) throws SQLException {
         Hotel obj = null;
