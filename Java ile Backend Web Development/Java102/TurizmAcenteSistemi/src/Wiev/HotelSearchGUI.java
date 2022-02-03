@@ -22,6 +22,7 @@ public class HotelSearchGUI extends JFrame {
     private JTextField txt_exit_date;
     private JTextField txt_guest_info;
     private JButton btn_search;
+    public static   String[] guestInfo;
 
     public HotelSearchGUI() throws UnsupportedLookAndFeelException, ClassNotFoundException, InstantiationException, IllegalAccessException, SQLException {
         add(wrapper);
@@ -37,7 +38,7 @@ public class HotelSearchGUI extends JFrame {
         btn_search.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String[] guestInfo = txt_guest_info.getText().split(",");
+                guestInfo   = txt_guest_info.getText().split(",");
                 Date dateEnter = null;
                 Date dateExit = null;
                 java.sql.Date sqlDateExit = null;

@@ -201,10 +201,10 @@ public class Hotel {
         return hotelKonumList;
     }
 
-    public static ArrayList<Hotel> showHotelSearchResult(Date dateEnter, Date dateExit,String konum) throws SQLException {
+    public static ArrayList<Hotel> showHotelSearchResult(Date dateEnter, Date dateExit, String konum) throws SQLException {
         Hotel hotel = null;
         String query = "SELECT * FROM TurizmAcenteSistemi.dbo.hotel , TurizmAcenteSistemi.dbo.room WHERE hotel.roomid = room.id AND (room.enterDate  NOT BETWEEN ? AND ? \n" +
-                "OR room.exitDate NOT  BETWEEN ? AND ?) AND konum = ? ";
+                "OR room.exitDate NOT  BETWEEN ? AND ?) AND konum = ? AND hotel.roomstorage > 0 ";
         PreparedStatement preparedStatement = DBHelper.getInstance().prepareStatement(query);
         preparedStatement.setDate(1, (java.sql.Date) dateEnter);
         preparedStatement.setDate(2, (java.sql.Date) dateExit);
@@ -227,6 +227,53 @@ public class Hotel {
             showHotelResultList.add(hotel);
         }
         return showHotelResultList;
+    }
+
+    public static ArrayList<Hotel> showAllHotel() throws SQLException {
+        ArrayList<Hotel> hotelList = new ArrayList<>();
+        Hotel hotel = null;
+        String query = "SELECT * FROM TurizmAcenteSistemi.dbo.hotel , TurizmAcenteSistemi.dbo.room WHERE hotel.roomid = room.id ";
+        PreparedStatement preparedStatement = DBHelper.getInstance().prepareStatement(query);
+        ResultSet resultSet = preparedStatement.executeQuery();
+        while (resultSet.next()) {
+            hotel = new Hotel();
+            hotel.setId(resultSet.getInt("id"));
+            hotel.setName(resultSet.getString("name"));
+            hotel.setEstablishing(resultSet.getString("establishing"));
+            hotel.setPensionType(resultSet.getString("pensiontype"));
+            hotel.setAddress(resultSet.getString("address"));
+            hotel.setKonum(resultSet.getString("konum"));
+            hotel.setEmail(resultSet.getString("email"));
+            hotel.setRoomType(resultSet.getString("roomtype"));
+            hotel.setRoomStorage(resultSet.getInt("roomstorage"));
+            hotel.setRoom(Room.getFetch(resultSet.getInt("roomid")));
+            hotel.setStar(resultSet.getInt("yıldız"));
+            hotelList.add(hotel);
+        }
+        return hotelList;
+    }
+
+    public static Hotel getFetch(int id) throws SQLException {
+        Hotel obj = null;
+        String query = "SELECT * FROM [TurizmAcenteSistemi].[dbo].[hotel] WHERE id = ?";
+        PreparedStatement preparedStatement = DBHelper.getInstance().prepareStatement(query);
+        preparedStatement.setInt(1, id);
+        ResultSet resultSet = preparedStatement.executeQuery();
+        if (resultSet.next()) {
+            obj = new Hotel();
+            obj.setId(resultSet.getInt("id"));
+            obj.setName(resultSet.getString("name"));
+            obj.setEstablishing(resultSet.getString("establishing"));
+            obj.setPensionType(resultSet.getString("pensiontype"));
+            obj.setAddress(resultSet.getString("address"));
+            obj.setEmail(resultSet.getString("email"));
+            obj.setRoomType(resultSet.getString("roomtype"));
+            obj.setRoomStorage(resultSet.getInt("roomstorage"));
+            obj.setRoom(Room.getFetch(resultSet.getInt("roomid")));
+            obj.setStar(resultSet.getInt("yıldız"));
+
+        }
+        return obj;
     }
 
 }
